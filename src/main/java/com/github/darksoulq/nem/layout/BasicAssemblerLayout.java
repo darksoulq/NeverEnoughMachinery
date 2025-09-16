@@ -1,8 +1,7 @@
 package com.github.darksoulq.nem.layout;
 
 import com.MT.xxxtrigger50xxx.Devices.Manufactoring.BasicAssembler;
-import com.github.darksoulq.nem.data.BasicAssemblerRecipe;
-import org.bukkit.inventory.ItemStack;
+import com.github.darksoulq.nem.data.recipe.BasicAssemblerRecipe;
 
 public class BasicAssemblerLayout extends MTRecipeLayout<BasicAssemblerRecipe>{
 

@@ -2,14 +2,16 @@ package com.github.darksoulq.nem.data;
 
 import com.MT.xxxtrigger50xxx.Devices.Manufactoring.CrudeAssembler;
 import com.MT.xxxtrigger50xxx.Guide.ItemMenu;
-import com.MT.xxxtrigger50xxx.MineItems;
 import com.MT.xxxtrigger50xxx.Recipes.MTRecipe;
 import com.MT.xxxtrigger50xxx.Recipes.RecipeUtils;
+import com.github.darksoulq.nem.data.recipe.AdvancedAssemblerRecipe;
+import com.github.darksoulq.nem.data.recipe.BasicAssemblerRecipe;
+import com.github.darksoulq.nem.data.recipe.CrudeAssemblerRecipe;
+import com.github.darksoulq.nem.data.recipe.MTWrappedRecipe;
 import com.github.darksoulq.nem.layout.AdvancedAssemblerLayout;
 import com.github.darksoulq.nem.layout.BasicAssemblerLayout;
 import com.github.darksoulq.nem.layout.CrudeAssemblerLayout;
 import com.github.darksoulq.ner.NerApi;
-import com.github.darksoulq.ner.layout.RecipeLayout;
 import com.github.darksoulq.ner.layout.RecipeLayoutRegistry;
 import org.bukkit.inventory.ItemStack;
 

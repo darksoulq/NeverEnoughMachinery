@@ -1,4 +1,4 @@
-package com.github.darksoulq.nem.data;
+package com.github.darksoulq.nem.data.recipe;
 
 import com.MT.xxxtrigger50xxx.Recipes.MTRecipe;
 

@@ -1,9 +1,9 @@
 package com.github.darksoulq.nem.layout;
 
 import com.MT.xxxtrigger50xxx.Devices.Device;
-import com.github.darksoulq.abyssallib.world.level.data.Identifier;
-import com.github.darksoulq.abyssallib.world.level.item.Item;
-import com.github.darksoulq.nem.data.MTWrappedRecipe;
+import com.github.darksoulq.abyssallib.common.util.Identifier;
+import com.github.darksoulq.abyssallib.world.item.Item;
+import com.github.darksoulq.nem.data.recipe.MTWrappedRecipe;
 import com.github.darksoulq.ner.layout.RecipeLayout;
 import com.github.darksoulq.ner.model.ParsedRecipeView;
 import com.github.darksoulq.ner.resources.Pack;
@@ -20,12 +20,13 @@ import org.bukkit.inventory.ItemStack;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public abstract class MTRecipeLayout<T extends MTWrappedRecipe> extends RecipeLayout<T> {
     private final static int[] TARGET_SLOTS = {
-            21, 22, 23,
-            30, 31, 32,
-            39, 40, 41
+            11, 12, 13,
+            20, 21, 22,
+            29, 30, 31
     };
     private final ItemStack device;
 
@@ -63,20 +64,27 @@ public abstract class MTRecipeLayout<T extends MTWrappedRecipe> extends RecipeLa
         if (recipe.hasTech()) {
             String tech = recipe.getTech();
             Item techItem = new Item(Identifier.of("nem", "research"), Material.PAPER);
-            techItem.getSettings().lore(ItemLore.lore()
-                    .lines(List.of(
-                            Component.translatable("lore.nem.research_required")
-                                    .color(NamedTextColor.DARK_GREEN)
-                                    .decoration(TextDecoration.ITALIC, false)
-                                    .decoration(TextDecoration.BOLD, true)
-                                    .append(Component.text(": " + tech))
-                                    .decoration(TextDecoration.ITALIC, false)
-                                    .decoration(TextDecoration.BOLD, true)
-                    ))
-                    .build());
+            Item.Tooltip tl = techItem.tooltip;
+            tl.lines.clear();
+            tl.addLine(
+                    Component.translatable("lore.nem.research_required")
+                            .color(NamedTextColor.DARK_GREEN)
+                            .decoration(TextDecoration.ITALIC, false)
+                            .decoration(TextDecoration.BOLD, true)
+                            .append(Component.text(": " + tech))
+                            .decoration(TextDecoration.ITALIC, false)
+                            .decoration(TextDecoration.BOLD, true)
+            );
+            techItem.updateTooltip();
             slotMap.put(35, List.of(techItem.getStack()));
         }
+        slotMap.put(24, List.of(recipe.getResult()));
         return slotMap;
+    }
+
+    @Override
+    public Set<Integer> getOutputSlots() {
+        return Set.of();
     }
 
     private void setLiquidIcon(ItemStack stack, String name, int amount, TextColor color) {

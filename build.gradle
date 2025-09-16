@@ -26,9 +26,9 @@ repositories {
 
 dependencies {
     paperweight.paperDevBundle('1.21.7-R0.1-SNAPSHOT')
-    implementation('com.github.darksoulq:AbyssalLib:v1.3.6-mc1.21.7')
-    implementation('com.github.darksoulq:NeverEnoughRecipes:v0.3.0')
-    compileOnly('com.MT:MTP:0.94')
+    implementation('com.github.darksoulq:AbyssalLib:v1.5.0-mc1.21.8')
+    implementation('com.github.darksoulq:NeverEnoughRecipes:v0.4.0')
+    compileOnly('com.MT:MTP:0.96')
 }
 
 tasks {

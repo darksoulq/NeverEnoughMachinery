@@ -1,7 +1,7 @@
 package com.github.darksoulq.nem.layout;
 
 import com.MT.xxxtrigger50xxx.Devices.Manufactoring.CrudeAssembler;
-import com.github.darksoulq.nem.data.CrudeAssemblerRecipe;
+import com.github.darksoulq.nem.data.recipe.CrudeAssemblerRecipe;
 
 public class CrudeAssemblerLayout extends MTRecipeLayout<CrudeAssemblerRecipe> {
 

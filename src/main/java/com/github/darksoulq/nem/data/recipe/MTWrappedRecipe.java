@@ -1,4 +1,4 @@
-package com.github.darksoulq.nem.data;
+package com.github.darksoulq.nem.data.recipe;
 
 import com.MT.xxxtrigger50xxx.Devices.Device;
 import com.MT.xxxtrigger50xxx.Recipes.MTRecipe;
@@ -24,15 +24,12 @@ public class MTWrappedRecipe {
     public ItemStack getResult() {
         return result;
     }
-
     public List<ItemStack> getIngredients() {
         return ingredients;
     }
-
     public Device.LiquidType getLiquid() {
         return liquid;
     }
-
     public int getLiquidAmount() {
         return liquidAmount;
     }
@@ -40,11 +37,9 @@ public class MTWrappedRecipe {
     public String getTech() {
         return tech;
     }
-
     public boolean hasTech() {
         return tech != null && !tech.isBlank();
     }
-
     public boolean hasLiquid() {
         return liquid != null;
     }
