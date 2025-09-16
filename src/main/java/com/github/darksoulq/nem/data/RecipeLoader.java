@@ -21,7 +21,7 @@ public class RecipeLoader {
     public static void init() {
         RecipeLayoutRegistry.register(new AdvancedAssemblerLayout());
         RecipeLayoutRegistry.register(new CrudeAssemblerLayout());
-        RecipeLayoutRegistry.register(new BasicAssemblerLayout());
+        RecipeLayoutRegistry.register(new BasicAssemblerLayout());      
         ItemStack crudeAss = new CrudeAssembler(null).getDeviceStack();
         for (ItemStack s : ItemMenu.getAllItems()) {
             if (!s.isSimilar(crudeAss)) NerApi.addItem(s);
