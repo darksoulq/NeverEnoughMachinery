@@ -59,7 +59,7 @@ public abstract class MTRecipeLayout<T extends MTWrappedRecipe> extends RecipeLa
                 case STEAM -> setLiquidIcon(liquidIcon, "steam", amount, NamedTextColor.WHITE);
                 case WATER -> setLiquidIcon(liquidIcon, "water", amount, NamedTextColor.BLUE);
             }
-            slotMap.put(27, List.of(liquidIcon));
+            slotMap.put(18, List.of(liquidIcon));
         }
         if (recipe.hasTech()) {
             String tech = recipe.getTech();
@@ -76,7 +76,7 @@ public abstract class MTRecipeLayout<T extends MTWrappedRecipe> extends RecipeLa
                             .decoration(TextDecoration.BOLD, true)
             );
             techItem.updateTooltip();
-            slotMap.put(35, List.of(techItem.getStack()));
+            slotMap.put(26, List.of(techItem.getStack()));
         }
         slotMap.put(24, List.of(recipe.getResult()));
         return slotMap;

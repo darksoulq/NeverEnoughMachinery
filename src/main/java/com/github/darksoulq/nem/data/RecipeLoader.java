@@ -21,10 +21,8 @@ public class RecipeLoader {
     public static void init() {
         RecipeLayoutRegistry.register(new AdvancedAssemblerLayout());
         RecipeLayoutRegistry.register(new CrudeAssemblerLayout());
-        RecipeLayoutRegistry.register(new BasicAssemblerLayout());      
-        ItemStack crudeAss = new CrudeAssembler(null).getDeviceStack();
+        RecipeLayoutRegistry.register(new BasicAssemblerLayout());
         for (ItemStack s : ItemMenu.getAllItems()) {
-            if (!s.isSimilar(crudeAss)) NerApi.addItem(s);
             NerApi.addItemToNamespace("minetorio", s);
         }
 
