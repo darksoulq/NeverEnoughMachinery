@@ -39,7 +39,13 @@ public class Pack {
         createItemDef(ns, "lubricant");
         createItemDef(ns, "sulfuric_acid");
         createItemDef(ns, "steam");
-        createItemDef(ns, "research");
+        Texture researchTex = ns.texture("item/" + "research");
+        Model researchModel = ns.model("research", false);
+        researchModel.parent("minecraft:item/generated");
+        researchModel.texture("layer0", researchTex);
+
+        Selector.Model researchSel = new Selector.Model(researchModel);
+        ns.itemDefinition("research", researchSel, true);
 
         pack.register(false);
     }
