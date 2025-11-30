@@ -84,7 +84,7 @@ public abstract class MTRecipeLayout<T extends MTWrappedRecipe> extends RecipeLa
 
     @Override
     public Set<Integer> getOutputSlots() {
-        return Set.of();
+        return Set.of(24);
     }
 
     private void setLiquidIcon(ItemStack stack, String name, int amount, TextColor color) {

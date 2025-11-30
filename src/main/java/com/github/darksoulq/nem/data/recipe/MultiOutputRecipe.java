@@ -10,8 +10,8 @@ public class MultiOutputRecipe {
     private final ItemStack input;
     private final List<ItemStack> results = new ArrayList<>();
 
-    public MultiOutputRecipe(Material input, List<ItemStack> result) {
-        this.input = ItemStack.of(input);
+    public MultiOutputRecipe(ItemStack input, List<ItemStack> result) {
+        this.input = input;
         this.results.addAll(result);
     }
 

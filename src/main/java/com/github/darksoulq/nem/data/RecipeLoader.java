@@ -1,18 +1,14 @@
 package com.github.darksoulq.nem.data;
 
-import com.MT.xxxtrigger50xxx.Devices.Manufactoring.CrudeAssembler;
 import com.MT.xxxtrigger50xxx.Guide.ItemMenu;
+import com.MT.xxxtrigger50xxx.Guide.MinetorioTables;
 import com.MT.xxxtrigger50xxx.Recipes.MTRecipe;
 import com.MT.xxxtrigger50xxx.Recipes.RecipeUtils;
-import com.github.darksoulq.nem.data.recipe.AdvancedAssemblerRecipe;
-import com.github.darksoulq.nem.data.recipe.BasicAssemblerRecipe;
-import com.github.darksoulq.nem.data.recipe.CrudeAssemblerRecipe;
-import com.github.darksoulq.nem.data.recipe.MTWrappedRecipe;
-import com.github.darksoulq.nem.layout.AdvancedAssemblerLayout;
-import com.github.darksoulq.nem.layout.BasicAssemblerLayout;
-import com.github.darksoulq.nem.layout.CrudeAssemblerLayout;
+import com.github.darksoulq.nem.data.recipe.*;
+import com.github.darksoulq.nem.layout.*;
 import com.github.darksoulq.ner.NerApi;
 import com.github.darksoulq.ner.layout.RecipeLayoutRegistry;
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
@@ -22,6 +18,8 @@ public class RecipeLoader {
         RecipeLayoutRegistry.register(new AdvancedAssemblerLayout());
         RecipeLayoutRegistry.register(new CrudeAssemblerLayout());
         RecipeLayoutRegistry.register(new BasicAssemblerLayout());
+        RecipeLayoutRegistry.register(new CrusherLayout());
+        RecipeLayoutRegistry.register(new SifterLayout());
         for (ItemStack s : ItemMenu.getAllItems()) {
             NerApi.addItemToNamespace("minetorio", s);
         }
@@ -34,9 +32,26 @@ public class RecipeLoader {
                 case ADVANCED -> addRecipe(new AdvancedAssemblerRecipe(r), r.getResult());
             }
         });
+
+        List<Material> siftables = MinetorioTables.getSiftable();
+        siftables.forEach(m -> {
+            SifterRecipe r = new SifterRecipe(ItemStack.of(m));
+            for (ItemStack res : r.getOutput()) addRecipe(r, res);
+        });
+        List<Material> crushables = MinetorioTables.getCrushables();
+        crushables.forEach(m -> {
+            CrusherRecipe r = new CrusherRecipe(ItemStack.of(m));
+            addRecipe(r, r.getOutput());
+        });
     }
 
     private static void addRecipe(MTWrappedRecipe recipe, ItemStack result) {
+        NerApi.registerRecipe(result, recipe);
+    }
+    private static void addRecipe(MultiOutputRecipe recipe, ItemStack result) {
+        NerApi.registerRecipe(result, recipe);
+    }
+    private static void addRecipe(CrusherRecipe recipe, ItemStack result) {
         NerApi.registerRecipe(result, recipe);
     }
 }

@@ -1,18 +1,17 @@
 package com.github.darksoulq.nem.layout;
 
+import com.github.darksoulq.nem.data.Pack;
 import com.github.darksoulq.nem.data.recipe.MultiOutputRecipe;
+import com.github.darksoulq.ner.layout.PaginatedSection;
 import com.github.darksoulq.ner.layout.RecipeLayout;
 import com.github.darksoulq.ner.model.ParsedRecipeView;
-import com.github.darksoulq.ner.resources.Pack;
+import com.github.darksoulq.ner.resources.UiItems;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public abstract class MultiOutputLayout<T extends MultiOutputRecipe> extends RecipeLayout<T> {
-    private final int[] TARGET_SLOTS = {21, 23};
+    private static final int[] SLOTS = new int[] {19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34};
     private final ItemStack device;
 
     public MultiOutputLayout(ItemStack device) {
@@ -22,13 +21,19 @@ public abstract class MultiOutputLayout<T extends MultiOutputRecipe> extends Rec
     @Override
     public ParsedRecipeView parseRecipe(MultiOutputRecipe recipe) {
         Map<Integer, List<ItemStack>> slotMap = new HashMap<>();
-        slotMap.put(TARGET_SLOTS[0], List.of(recipe.getInput()));
-        slotMap.put(TARGET_SLOTS[1], recipe.getOutput());
-        return new ParsedRecipeView(slotMap, Pack.STONE_CUTTER, -8, device);
+        slotMap.put(4, List.of(recipe.getInput()));
+        PaginatedSection section = new PaginatedSection(SLOTS, recipe.getOutput(),
+                new PaginatedSection.Button(UiItems.NEXT.get().getStack(), 44),
+                new PaginatedSection.Button(UiItems.PREV.get().getStack(), 44 - 8));
+        return new ParsedRecipeView(slotMap, Pack.MULTI_OUTPUT, -8, device, List.of(section));
     }
 
     @Override
     public Set<Integer> getOutputSlots() {
-        return Set.of(TARGET_SLOTS[1]);
+        Set<Integer> ret = new HashSet<>();
+        for (int slot : SLOTS) {
+            ret.add(slot);
+        }
+        return ret;
     }
 }

@@ -10,7 +10,8 @@ import com.github.darksoulq.abyssallib.server.resource.asset.definition.Selector
 import org.bukkit.plugin.Plugin;
 
 public class Pack {
-    public static Font.Glyph MULTI_OUTPUT;
+    public static Font.TextureGlyph MULTI_OUTPUT;
+
     public static void init(Plugin plugin) {
         ResourcePack pack = new ResourcePack(plugin, "nem");
         Namespace ns = pack.namespace("nem");
