@@ -14,7 +14,7 @@ public class MTWrappedRecipe {
     private final String tech;
 
     public MTWrappedRecipe(MTRecipe recipe) {
-        result =  recipe.getResult();
+        result = recipe.getResult();
         ingredients = recipe.getIngredients();
         liquid = recipe.getRecipeLiquid();
         liquidAmount = recipe.getLiquidAmount();
@@ -24,12 +24,15 @@ public class MTWrappedRecipe {
     public ItemStack getResult() {
         return result;
     }
+
     public List<ItemStack> getIngredients() {
         return ingredients;
     }
+
     public Device.LiquidType getLiquid() {
         return liquid;
     }
+
     public int getLiquidAmount() {
         return liquidAmount;
     }
@@ -37,9 +40,11 @@ public class MTWrappedRecipe {
     public String getTech() {
         return tech;
     }
+
     public boolean hasTech() {
         return tech != null && !tech.isBlank();
     }
+
     public boolean hasLiquid() {
         return liquid != null;
     }

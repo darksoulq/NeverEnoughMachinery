@@ -1,30 +1,22 @@
 package com.github.darksoulq.nem;
 
+import com.MT.xxxtrigger50xxx.Guide.ItemMenu;
+import com.github.darksoulq.abyssallib.server.event.EventBus;
+import com.github.darksoulq.abyssallib.server.event.SubscribeEvent;
 import com.github.darksoulq.nem.data.Pack;
 import com.github.darksoulq.nem.data.RecipeLoader;
-import com.github.darksoulq.ner.data.RecipeManager;
-import com.github.darksoulq.ner.gui.MainMenu;
+import com.github.darksoulq.nem.layout.*;
+import com.github.darksoulq.ner.NeverEnoughRecipes;
+import com.github.darksoulq.ner.plugin.NerRegistrationEvent;
+import com.github.darksoulq.ner.plugin.Registration;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
-
-import java.util.ArrayList;
 
 public final class NeverEnoughMachinery extends JavaPlugin {
 
     @Override
     public void onEnable() {
         Pack.init(this);
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                RecipeLoader.init();
-                MainMenu.ITEMS = MainMenu.sortDisplay(new ArrayList<>(RecipeManager.getAllItems()));
-            }
-        }.runTaskLater(this, 10);
-    }
-
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
+        new EventBus(this).register(this);
+        NeverEnoughRecipes.registerPlugin(new NemIntegration());
     }
 }

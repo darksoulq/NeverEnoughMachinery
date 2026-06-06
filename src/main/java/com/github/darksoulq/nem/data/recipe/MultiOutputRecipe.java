@@ -1,6 +1,5 @@
 package com.github.darksoulq.nem.data.recipe;
 
-import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
@@ -21,22 +20,4 @@ public class MultiOutputRecipe {
     public List<ItemStack> getOutput() {
         return results;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

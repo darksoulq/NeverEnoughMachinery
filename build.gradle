@@ -1,11 +1,11 @@
 plugins {
     id 'java'
-    id 'io.papermc.paperweight.userdev' version '2.0.0-beta.17'
-    id("xyz.jpenilla.run-paper") version "2.3.1"
+    id 'io.papermc.paperweight.userdev' version '2.0.0-beta.21'
+    id("xyz.jpenilla.run-paper") version "3.0.2"
 }
 
 group = 'com.github.darksoulq'
-version = '0.2.0'
+version = '0.4.0'
 
 repositories {
     mavenCentral()
@@ -25,19 +25,19 @@ repositories {
 }
 
 dependencies {
-    paperweight.paperDevBundle('1.21.9-R0.1-SNAPSHOT')
-    implementation('com.github.darksoulq:AbyssalLib:v1.6.0-mc1.21.9')
-    implementation('com.github.darksoulq:NeverEnoughRecipes:v0.4.1')
-    compileOnly('com.MT:MTP:0.98')
+    paperweight.paperDevBundle('26.1.2.build.12-alpha')
+    implementation('com.github.darksoulq:AbyssalLib:v2.0.4-mc.26.1.2')
+    implementation('com.github.darksoulq:NeverEnoughRecipes:v1.1.0-mc.26.1.2')
+    compileOnly('com.MT:Minetorio:1.0.0')
 }
 
 tasks {
     runServer {
-        minecraftVersion("1.21.9")
+        minecraftVersion("26.1.2")
     }
 }
 
-def targetJavaVersion = 21
+def targetJavaVersion = 25
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
     sourceCompatibility = javaVersion
